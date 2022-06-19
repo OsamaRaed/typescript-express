@@ -1,6 +1,6 @@
 import { verifyJWT } from "../utils/jwt";
 
-export const checkSignin = async (req: any, res: any, next: any) => {
+export const checkSignin = async (req: any, res: any, next: any): Promise<void> => {
     const token = req.headers.authorization.split(' ')[1];;
     if (token) {
         console.log(token);

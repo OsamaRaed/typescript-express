@@ -2,7 +2,7 @@ import { comparePassword } from "../../../utils/bcrypt";
 import { getUser } from "../../../database/queries/auth/login";
 import { signJWT } from "../../../utils/jwt";
 
-export const loginController = async (req: any, res: any) => {
+export const loginController = async (req: any, res: any): Promise<void>  => {
     const { email, password } = req.body;
     const user: any = await getUser(email);
     if (user.length == 0) {

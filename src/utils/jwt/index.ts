@@ -1,7 +1,7 @@
 import { verify, sign } from "jsonwebtoken";
 
 
-export const signJWT = (payload: any, secret: string) => {
+export const signJWT = (payload: any, secret: string): string => {
     return sign(payload, secret);
 }
 

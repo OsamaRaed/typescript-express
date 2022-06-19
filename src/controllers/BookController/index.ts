@@ -1,14 +1,14 @@
 import { getBooks, addBook, updateBook, deleteBook } from "../../database/queries/books";
 
 
-export const getAllBooksController = async (req: any, res: any) => {
+export const getAllBooksController = async (req: any, res: any) : Promise<void>  => {
     const rows = await getBooks();
     res.status(200).json({
         books: rows
     });
 }
 
-export const addBookController = async (req: any, res: any) => {
+export const addBookController = async (req: any, res: any) : Promise<void>  => {
     const { book_name, author } = req.body;
     const rows = await addBook(book_name, author);
     res.status(201).json({
@@ -16,7 +16,7 @@ export const addBookController = async (req: any, res: any) => {
     });
 }
 
-export const updateBookController = async (req: any, res: any) => {
+export const updateBookController = async (req: any, res: any) : Promise<void>  => {
     const { book_name, author, id } = req.body;
     const rows = await updateBook(book_name, author, id);
     res.status(200).json({
@@ -25,10 +25,15 @@ export const updateBookController = async (req: any, res: any) => {
 }
 
 
-export const deleteBookController = async (req: any, res: any) => {
+export const deleteBookController = async (req: any, res: any)  : Promise<void> => {
     const { id } = req.params;
     const rows = await deleteBook(id);
     res.status(200).json({
         message: 'Book deleted successfully'
     });
 }
+
+
+
+
+
