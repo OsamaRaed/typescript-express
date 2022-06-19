@@ -11,9 +11,6 @@ const MY_SQL_DB_CONNECTION_LIMIT = 4
 
 let pool: Pool;
 
-/**
- * generates pool connection to be used throughout the app
- */
 export const init = () => {
   try {
     pool = createPool({
@@ -31,13 +28,7 @@ export const init = () => {
   }
 };
 
-/**
- * executes SQL queries in MySQL db
- *
- * @param {string} query - provide a valid SQL query
- * @param {string[] | Object} params - provide the parameterized values used
- * in the query
- */
+
 export const execute = <T>(query: string, params: string[] | Object): Promise<T> => {
   try {
     if (!pool) throw new Error('Pool was not created. Ensure pool is created when running the app.');
